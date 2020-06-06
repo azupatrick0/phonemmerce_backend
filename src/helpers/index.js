@@ -28,12 +28,26 @@ const search = (items, searchString) => {
   if (!searchString) {
     return items;
   } else {
+    const arrayOfSearchString = searchString.toLowerCase().split(',');
+
     const result = items && items.filter((item) => {
       const matchesSearchTerm = [
-        item.name.toLowerCase().match(new RegExp(searchString.toLowerCase(), 'g')),
-        item.grade.toLowerCase().match(new RegExp(searchString.toLowerCase(), 'g')),
-        item.storageSize.toLowerCase().match(new RegExp(searchString.toLowerCase(), 'g')),
-        item.price.toLowerCase().match(new RegExp(searchString.toLowerCase(), 'g')),
+        arrayOfSearchString.some(
+          (element) => 
+            item.name.toLowerCase().match(new RegExp(element.toString().trim().split(' ').join(' '), 'g'))
+        ),
+        arrayOfSearchString.some(
+          (element) => 
+            item.grade.toLowerCase().match(new RegExp(element.toString().trim().split(' ').join(' '), 'g'))
+        ),
+        arrayOfSearchString.some(
+          (element) => 
+            item.storageSize.toLowerCase().match(new RegExp(element.toString().trim().split(' ').join(' '), 'g'))
+        ),
+        arrayOfSearchString.some(
+          (element) => 
+            item.price.toLowerCase().match(new RegExp(element.toString().trim().split(' ').join(' '), 'g'))
+        )
       ];
       return matchesSearchTerm.some(truthy);
     });
