@@ -38,7 +38,7 @@ class Phones {
               name: phoneName,
               grade: gradesValue,
               storageSize: storageAndPhonePrices[i][1],
-              price: storageAndPhonePrices[i][index + 2],
+              price: storageAndPhonePrices[i][index + 2].split('$').join(''),
             };
 
             phones = [
@@ -89,6 +89,8 @@ class Phones {
     const limit = request.query.limit;
     const page = request.query.page;
     const type = request.query.type;
+    const min = request.query.min;
+    const max = request.query.max;
 
     let phoneRequest;
     if (type && type === 'buyrequest') {
@@ -110,7 +112,7 @@ class Phones {
         status: 200,
         data: {
           message: 'phones returned successfully',
-          phones: pagination(limit, page, search(phoneRequest[0].phones, searchString))
+          phones: pagination(limit, page, searchString ? search(phoneRequest[0].phones, searchString) : search(phoneRequest[0].phones, '', min, max))
         }
       });
     }

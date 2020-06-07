@@ -21,12 +21,13 @@ const pagination = (limit, page, arrayOfItems) => {
   }
 }
 
-const search = (items, searchString) => {
+const search = (items, searchString, min, max) => {
   
   const truthy = (element) => element;
 
   if (!searchString) {
-    return items;
+    const result = items && items.filter((item) => +item.price >= +min && +item.price <= +max)
+    return result;
   } else {
     const arrayOfSearchString = searchString.toLowerCase().split(',');
 
