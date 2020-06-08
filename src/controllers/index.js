@@ -38,7 +38,7 @@ class Phones {
               name: phoneName,
               grade: gradesValue,
               storageSize: storageAndPhonePrices[i][1],
-              price: storageAndPhonePrices[i][index + 2].split('$').join(''),
+              price: storageAndPhonePrices[i][index + 2].split('$').join('').split(',').join(''),
             };
 
             phones = [
