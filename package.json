@@ -43,7 +43,7 @@
     "google-spreadsheet": "^3.0.11",
     "googleapis": "^39.2.0",
     "logger": "0.0.1",
-    "mocha": "^6.2.0",
+    "mocha": "^10.2.0",
     "mongoose": "^5.7.6",
     "mongoose-paginate": "^5.0.3",
     "nyc": "^14.1.1",
